@@ -23,6 +23,9 @@ inputs:
   ignore_missing_schemas:
     description: "Whether or not to skip custom resources" 
     default: true
+  ignored_filename_patterns:
+    description: "A comma-separated list of regular expressions specifying filenames to ignore"
+    default: ""
 runs:
   using: 'docker'
   image: 'docker://garethr/kubeval:latest'
@@ -36,4 +39,4 @@ runs:
   - ${{ inputs.version }}
   - --openshift=${{ inputs.openshift }}
   - --ignore-missing-schemas=${{ inputs.ignore_missing_schemas }}
-
+  - --ignored-filename-patterns=${{ inputs.ignored_filename_patterns }}
